@@ -21,6 +21,7 @@ interface IImportInfos {
   declarations: IImportDeclarations[];
 }
 
+// 获取代码的import导入信息
 export async function getImportInfos(text: string): Promise<IImportInfos> {
   const importDeclarations: IImportDeclarations[] = await getImportDeclarations(text);
 

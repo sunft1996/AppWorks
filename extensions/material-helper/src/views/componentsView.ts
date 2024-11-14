@@ -27,6 +27,7 @@ const addComponentTypeOptions = [
   },
 ];
 
+// 创建添加组件的快速选择器
 async function showAddComponentQuickPick() {
   const quickPick = window.createQuickPick();
   quickPick.items = await getOptions(addComponentTypeOptions);
@@ -162,6 +163,7 @@ export function createComponentsTreeView(context: vscode.ExtensionContext) {
   const componentsProvider = new ComponentsProvider(context, projectPath);
   const treeView = vscode.window.createTreeView('components', { treeDataProvider: componentsProvider });
 
+  // 添加组件
   registerCommand('material-helper.components.add', async () => {
     await showAddComponentQuickPick();
   });

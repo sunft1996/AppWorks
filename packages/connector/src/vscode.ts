@@ -34,6 +34,7 @@ export function active(context: vscode.ExtensionContext, config?: IConfig) {
   connectService(webviewPanel, context, services);
 }
 
+// 连接webview
 export function connectService(
   webviewPanel: vscode.WebviewPanel,
   context: vscode.ExtensionContext,

@@ -104,6 +104,7 @@ export async function addCode(dataSource: IMaterialComponent) {
   const packageJSONPath = path.join(projectPath, dependencyDir, npm, packageJSONFilename);
   try {
     const packageJSON = await fsExtra.readJson(packageJSONPath);
+    // 判断package.json中是否存在当前包
     if (semver.satisfies(packageJSON.version, version)) {
       return;
     }

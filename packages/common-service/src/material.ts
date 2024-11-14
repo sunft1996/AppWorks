@@ -89,6 +89,7 @@ export const bulkInstallMaterialsDependencies = async function (
   const filterDependencies: Array<{ [packageName: string]: string }> = [];
   Object.keys(pagesDependencies).forEach((packageName) => {
     // eslint-disable-next-line no-prototype-builtins
+    // 筛选出项目中没有，但是区块中有的依赖，进行安装
     if (projectPackageJSON.dependencies && !projectPackageJSON.dependencies.hasOwnProperty(packageName)) {
       filterDependencies.push({
         [packageName]: pagesDependencies[packageName],

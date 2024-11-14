@@ -210,6 +210,7 @@ function getBaseMaterials(data: any[], npm: string, version: string, componentTy
   });
 }
 
+// 增加物料源
 export const addSource = async function (materialSource: IMaterialSource) {
   const { source, name } = materialSource;
   const sources: IMaterialSource[] = await getSources();

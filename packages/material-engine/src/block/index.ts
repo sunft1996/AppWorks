@@ -67,6 +67,7 @@ export const renderBlocks = async function (
         throw new Error(i18n.format('package.block-service.targetDirExists', { targetPath }));
       }
 
+      // 项目是js而区块是ts时，ts转js
       if (blockType === 'ts' && projectType === 'js') {
         const files = glob.sync('**/*.@(ts|tsx)', {
           cwd: blockSourceSrcPath,
@@ -143,13 +144,16 @@ export async function addBlockCode(block: IMaterialBlock) {
   trigger('block.addBlockCode', block, { fsPath });
 }
 
+// 插入区块
 export async function insertBlock(activeTextEditor: vscode.TextEditor, blockName: string) {
   const { position: importDeclarationPosition } = await getImportInfos(activeTextEditor.document.getText());
   activeTextEditor.edit((editBuilder: vscode.TextEditorEdit) => {
+    // 插入区块导入
     editBuilder.insert(importDeclarationPosition, getImportTemplate(blockName, `./components/${blockName}`));
 
     const { selection } = activeTextEditor;
     if (selection && selection.active) {
+      // 插入区块代码
       const insertPosition = new Position(selection.active.line, selection.active.character);
       editBuilder.insert(insertPosition, getTagTemplate(blockName));
     }

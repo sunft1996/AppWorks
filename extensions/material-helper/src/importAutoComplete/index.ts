@@ -8,6 +8,7 @@ import getFrameworkItems from './getFrameworkItems';
 import getComponentItems from './getComponentItems';
 import getFileItems from './getFileItems';
 
+// 代码辅助
 async function provideCompletionItems(document: vscode.TextDocument): Promise<vscode.CompletionItem[]> {
   const items: vscode.CompletionItem[] = [];
   const alreadyImportSet = getAlreadyImportSet(document);

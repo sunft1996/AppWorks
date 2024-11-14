@@ -41,6 +41,7 @@ export function activate(context: vscode.ExtensionContext) {
         layout = { orientation: 0, groups: [{ size: 0.7 }, { size: 0.3 }] };
       }
 
+      // 这里
       materialImporterWebviewPanel = window.createWebviewPanel(
         'AppWorks',
         i18n.format('extension.iceworksMaterialHelper.materailImporter.title'),
